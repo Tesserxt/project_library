@@ -1,5 +1,5 @@
 const myLibrary = [];
-const card = `
+const cardHTML = `
         <div class="card">
             <div class="main-content">
                 <div>
@@ -39,8 +39,14 @@ function display(myLibrary) {
     const container = document.querySelector('.container');
 
     myLibrary.map((obj) => {
-        container.innerHTML += card;
+        container.innerHTML += cardHTML;
 
+        //sets unique Book.id to each card
+        const cards = document.querySelectorAll('.card');
+        cards.forEach((card) => {
+            card.setAttribute('id', obj.id)
+        });
+        
         const title = document.querySelectorAll('.title');
         const author = document.querySelectorAll('.author');
         const nPages = document.querySelectorAll('.npages');
@@ -58,11 +64,15 @@ function display(myLibrary) {
                     let status = e.target.textContent
                     obj.isRead = (status === 'Read') ? e.target.textContent = 'Unread' : e.target.textContent = 'Read';
                     // button.style.backgroundColor = 'green'
-                    console.log(obj.isRead)
+                    console.log(obj.isRead);
                 }
+
+                //removing book card from DOM and myLibrary
                 else if (e.target.id === 'remove') {
                     const clicked_card = button.closest('.card');
-                    clicked_card.remove()
+                    myLibrary = myLibrary.filter((obj) => (!obj.id === clicked_card.id));
+                    clicked_card.remove();
+
                 }
             });
         });
@@ -72,9 +82,9 @@ function display(myLibrary) {
 }
 
 addBookToLibrary('Lost in maya', 'god', '1000', false)
+addBookToLibrary('Lost in m', 'god', '1000', false)
 
 
 display(myLibrary);
 console.log('radha')
-
 
