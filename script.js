@@ -44,18 +44,37 @@ function display(myLibrary) {
         const title = document.querySelectorAll('.title');
         const author = document.querySelectorAll('.author');
         const nPages = document.querySelectorAll('.npages');
-        const read  = document.querySelectorAll('#read');
-        const remove = document.querySelectorAll('#remove');
-    
-        title[title.length-1].textContent = obj.title;
-        author[author.length-1].textContent = obj.author;
-        nPages[nPages.length-1].textContent = obj.nPages;
-        read[read.length-1].textContent = 'unread'
-        console.log(read)
+
+
+        title[title.length - 1].textContent = obj.title;
+        author[author.length - 1].textContent = obj.author;
+        nPages[nPages.length - 1].textContent = obj.nPages;
+
+        const buttons = document.querySelectorAll("button");
+        buttons.forEach((button) => {
+            button.addEventListener("click", (e) => {
+                
+                if (e.target.id === 'read') {
+                    let status = e.target.textContent
+                    obj.isRead = (status === 'Read') ? e.target.textContent = 'Unread' : e.target.textContent = 'Read';
+                    // button.style.backgroundColor = 'green'
+                    console.log(obj.isRead)
+                }
+                else if (e.target.id === 'remove') {
+                    const clicked_card = button.closest('.card');
+                    clicked_card.remove()
+                }
+            });
+        });
+
+
     });
 }
 
 addBookToLibrary('Lost in maya', 'god', '1000', false)
 
 
-display(myLibrary)
+display(myLibrary);
+console.log('radha')
+
+
