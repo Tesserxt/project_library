@@ -10,25 +10,30 @@
 </head>
 
 <body>
-    <div class="container">
+
+    <div class="containerglobal">
         <div class="card">
-            <div class="main-content">
+            <form>
+                <input type="text" id="title" placeholder="title" name="title">
+                <input type="number" id="pages" placeholder="pages" name="pages">
+                <input type="text" id="author" placeholder="author" name="author">
                 <div>
-                    <span class="npages">100</span>
-                    <span>pages</span>
+                    <label for="read">read</label>
+                    <input type="checkbox" id="read" name="isRead" value="read">
                 </div>
-                <p class="title">Different ways to use CSS in React</p>
-                <div class="categories">
-                    <button id="read">Read</button>
-                    <button id="remove">Remove</button>
-                </div>
-            </div>
-            <div>
-                <span class="by">by</span>
-                <span class="author">pages</span>
-            </div>
+                <button type="submit">Add Book</button>
+            </form>
+        </div>
+        <div class="container">
         </div>
     </div>
+
+
+
+
+
+
+
 </body>
 
 </html>
