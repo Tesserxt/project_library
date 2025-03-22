@@ -1,4 +1,4 @@
-const myLibrary = [];
+let myLibrary = [];
 const cardHTML = `
         <div class="card">
             <div class="main-content">
@@ -8,7 +8,7 @@ const cardHTML = `
                 </div>
                 <p class="title"></p>
                 <div class="categories">
-                    <button id="read">Read</button>
+                    <button id="read">Unread</button>
                     <button id="remove">Remove</button>
                 </div>
             </div>
@@ -18,7 +18,7 @@ const cardHTML = `
             </div>
         </div>`;
 
-function Book(title, author, nPages, isRead) {
+function Book(title, author, nPages, isRead = 'unread') {
     if (!new.target) {
         throw Error("You must use the 'new' operator to call the constructor");
     }
